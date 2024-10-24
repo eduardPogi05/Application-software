@@ -1,0 +1,141 @@
+Software Development (Code in Python or any language):
+
+Karaniwan, ang mga programmer ang pangunahing nakakaintindi ng code dahil sila ang gumagawa at nagpapanatili ng mga system at application.
+Ang source code ay para sa mga developer na marunong sa programming language, gaya ng Python, para maayos na maisulat, maintindihan, at mapanatili ang software.
+Halimbawa: Kapag nagsusulat ka ng isang Python script na gagamitin bilang back-end system, malamang ang mga fellow developers lang ang makakakita at makakaintindi ng code na iyon.
+Application Software:
+
+Ang mga application software naman ay ang mga produkto ng software development na nakikita at ginagamit ng mga end-users (tao na hindi kailangang programmer).
+Ang application ay dapat user-friendly, kaya’t kadalasan ito ay may graphical user interface (GUI) o isang design na madaling gamitin at maintindihan ng kahit sino.
+Halimbawa: Isang desktop app na nagbibigay-daan sa mga user na mag-click ng buttons para magpatakbo ng isang programa. Hindi kailangan ng mga user na makita o maintindihan ang code sa likod ng app.
+Kaya, ang mga programmer ang gumagawa ng mga code, pero ang layunin nila ay makalikha ng software na madaling maintindihan at gamitin ng end-users.
+
+May gusto ka bang i-clarify o idagdag?
+
+
+
+
+
+
+You said:
+paanp gumawa ng application software
+ChatGPT said:
+ChatGPT
+Para makagawa ng isang application software, kailangan mong dumaan sa ilang hakbang. Narito ang mga pangunahing steps na maaari mong sundan, lalo na kung gagawa ka ng application software gamit ang Python:
+
+1. Pagplano ng Application
+Tukuyin ang layunin: Ano ang gusto mong ipagawa sa app? Ano ang mga features nito?
+Makilala ang audience: Sino ang gagamit ng app mo? Ano ang kanilang mga pangangailangan?
+Functional requirements: Ano ang mga functionality na kailangan mong isama (e.g., login system, file upload, etc.)?
+Non-functional requirements: Pag-aralan din ang performance, security, at usability.
+2. Pumili ng Tamang Tools at Libraries
+Python: Gagamitin mo ito bilang programming language para sa development.
+Libraries/Frameworks:
+GUI Libraries: Kung graphical user interface (GUI) ang kailangan mo, maaaring gumamit ng libraries tulad ng:
+Tkinter – Simple and built-in Python library for GUI.
+PyQt – More advanced GUI toolkit.
+Kivy – Cross-platform, good for mobile apps and touchscreens.
+Web Frameworks: Kung web-based application naman ang gusto mo:
+Django or Flask – Para sa pag-develop ng web applications.
+Databases: Kung kailangan mong mag-store ng data, maaari mong gamitin ang SQLite (built-in sa Python), o mas advanced options gaya ng MySQL o PostgreSQL.
+3. Magsimula ng Pag-coding
+Basic Structure:
+
+Simulan sa paglikha ng mga pangunahing components ng app, gaya ng mga input forms, buttons, at logic para sa mga functionalities na gagawin.
+GUI Design:
+
+Kung gumagamit ka ng GUI, halimbawa, gamit ang Tkinter:
+python
+Copy code
+import tkinter as tk
+
+def button_click():
+    print("Button clicked!")
+
+root = tk.Tk()
+root.title("Simple App")
+
+button = tk.Button(root, text="Click Me", command=button_click)
+button.pack()
+
+root.mainloop()
+Interaction: Tukuyin ang interaction sa pagitan ng user at application, tulad ng pagkuha ng input, paggawa ng database queries, o pag-display ng results.
+
+Database Management:
+
+Kung kailangan ng storage ng data:
+python
+Copy code
+import sqlite3
+
+# Create a database or connect to one
+conn = sqlite3.connect('my_app.db')
+
+# Create a cursor
+cursor = conn.cursor()
+
+# Create a table
+cursor.execute("""CREATE TABLE users (
+                  name TEXT,
+                  age INTEGER)""")
+
+# Commit changes and close the connection
+conn.commit()
+conn.close()
+4. Testing
+Unit Testing: Suriin bawat component ng app para matiyak na gumagana nang tama.
+User Testing: Ibigay sa mga user para masuri nila ang usability at functionality.
+5. Deployment
+Kung ito ay desktop application:
+Gumamit ng tools tulad ng PyInstaller para i-convert ang Python code mo sa isang standalone application (.exe sa Windows).
+Command:
+bash
+Copy code
+pyinstaller --onefile your_script.py
+Kung ito ay web-based application, i-deploy ito gamit ang mga platforms gaya ng Heroku, AWS, o PythonAnywhere.
+6. Maintenance
+Patuloy na i-improve ang application base sa feedback ng users, at tiyaking updated ito lalo na kung may mga bagong security threats o performance issues.
+7. Document the Software
+Gumawa ng user manual para matulungan ang mga end-users na madaling maintindihan ang paggamit ng app mo.
+Example: Basic To-Do App with Tkinter
+python
+Copy code
+import tkinter as tk
+from tkinter import messagebox
+
+tasks = []
+
+def add_task():
+    task = task_entry.get()
+    if task:
+        tasks.append(task)
+        task_list.insert(tk.END, task)
+        task_entry.delete(0, tk.END)
+    else:
+        messagebox.showwarning("Input Error", "Enter a task.")
+
+def delete_task():
+    try:
+        task_index = task_list.curselection()[0]
+        task_list.delete(task_index)
+        tasks.pop(task_index)
+    except:
+        messagebox.showwarning("Delete Error", "Select a task to delete.")
+
+root = tk.Tk()
+root.title("To-Do List App")
+
+task_entry = tk.Entry(root, width=30)
+task_entry.pack(pady=10)
+
+add_button = tk.Button(root, text="Add Task", command=add_task)
+add_button.pack()
+
+delete_button = tk.Button(root, text="Delete Task", command=delete_task)
+delete_button.pack()
+
+task_list = tk.Listbox(root, height=8, width=50)
+task_list.pack()
+
+root.mainloop()
+Ito ay isang simple To-Do App. Puwede mong dagdagan ng mga features tulad ng saving tasks to a database, priority levels, o deadlines.
